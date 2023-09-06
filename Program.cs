@@ -1,3 +1,8 @@
+
+using ControleDeContatos.Data;
+using ControleDeContatos.Repositorio;
+using Microsoft.EntityFrameworkCore;
+
 namespace ControleDeContatos
 {
     public class Program
@@ -8,6 +13,10 @@ namespace ControleDeContatos
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            
+            builder.Services.AddDbContext<BancoContext> //Conectando da forma nova
+                (options => options.UseSqlServer("Server=DESKTOP-I91URTC\\SQLEXPRESS;Database=DB_SistemaContatos;Trusted_Connection=True;Encrypt=False;"));
+            builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>(); //Configurando injeção para de Interface a repositorio
 
             var app = builder.Build();
 
