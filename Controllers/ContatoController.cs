@@ -36,8 +36,26 @@ namespace ControleDeContatos.Controllers
 
         public IActionResult Apagar(int id)
         {
-            _contatoRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            { 
+                    bool apagado = _contatoRepositorio.Apagar(id);
+                    if(apagado)
+                    {
+                        TempData["MensagemSucesso"] = "Contato apagado com sucesso";
+                    } 
+                    else
+                    {
+                        TempData["MensagemErro"] = "Ops, não conseguimos apagar seu contato";
+                    } 
+                    return RedirectToAction("Index");
+            } 
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu contato, tente novamente, detalhes do error: {erro.Message}";
+                return RedirectToAction("Index");
+            };
+
+           
         }
 
         [HttpPost]
@@ -65,13 +83,21 @@ namespace ControleDeContatos.Controllers
         [HttpPost]
         public IActionResult Alterar(ContatoModel contato)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _contatoRepositorio.Atualizar(contato);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Atualizar(contato);
+                    TempData["MensagemSucesso"] = "Contato alterado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View("Editar", contato);
             }
-            return View("Editar", contato);
-
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos alterar seu contato, tente novamente, detale do error: {erro.Message}";
+                return RedirectToAction("Index");
+            };                  
         }
     }
 }
