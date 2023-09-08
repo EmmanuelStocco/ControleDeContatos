@@ -31,7 +31,7 @@ namespace ControleDeContatos.Repositorio
         public ContatoModel Atualizar(ContatoModel contato)
         {
             ContatoModel contatoDb = ListarPorId(contato.Id);
-            if (contatoDb == null) throw new System.Exception("House um Erro na atualização do contato");
+            if (contatoDb == null) throw new System.Exception("House um erro na atualização do contato");
 
             contatoDb.Nome = contato.Nome;
             contatoDb.Email = contato.Email;
@@ -41,6 +41,15 @@ namespace ControleDeContatos.Repositorio
             _bancoContext.SaveChanges();
 
             return contatoDb;
+        }
+
+        public bool Apagar(int id)
+        {
+            ContatoModel contatoDb = ListarPorId(id);
+            if (contatoDb == null) throw new System.Exception("Houve um Erro na deleção do contato");
+            _bancoContext.Contatos.Remove(contatoDb);
+            _bancoContext.SaveChanges();
+            return true;
         }
     }
 }
