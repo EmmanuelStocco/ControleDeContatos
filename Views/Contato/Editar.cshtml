@@ -9,6 +9,8 @@
 </div>
 
 <form asp-controller="Contato" asp-action="Alterar" method="post">
+    <input type="hidden" asp-for="Id" />
+
     <div class="form-group">
         <label for="nome" class="form-label">Nome</label>
         <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
@@ -25,6 +27,6 @@
     </div>
 
     <br />
-    <button type="submit" asp-route-id="contato.Id" class="btn btn-primary btn-block">Alterar </button>
-    <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+    <button type="submit" class="btn btn-primary btn-block" >Alterar </button>
+    <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Contato" role="button">Voltar</a>
 </form>
