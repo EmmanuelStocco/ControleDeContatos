@@ -6,11 +6,15 @@ namespace ControleDeContatos.Repositorio
     public class ContatoRepositorio : IContatoRepositorio
     {
         private readonly BancoContext _bancoContext;
-        public ContatoRepositorio(BancoContext bancoContext) //injetando Dependencia
+        public ContatoRepositorio(BancoContext bancoContext)
         {
             _bancoContext = bancoContext;
         }
 
+        public ContatoModel ListarPorId(int id)
+        {
+            return _bancoContext.Contatos.FirstOrDefault(x => x.Id == id);
+;       }
 
         public List<ContatoModel> BuscarTodos()
         {
@@ -19,11 +23,9 @@ namespace ControleDeContatos.Repositorio
 
         public ContatoModel Adicionar(ContatoModel contato)
         {
-            // gravar no banco de dados
             _bancoContext.Contatos.Add(contato);
             _bancoContext.SaveChanges();
             return contato;
         }
-
     }
 }
