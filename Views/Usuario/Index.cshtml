@@ -5,7 +5,7 @@
 
 <div class="text-center"> 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="Criar">Adicionar novo usuário</a>
+        <a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="Criar">Adicionar novo usuário</a>
     </div>
     <br />
 
@@ -29,7 +29,7 @@
 
     <h1 class="display-4">Listagem de Usuários</h1>
 
-    <table class="table" id="table-contatos">
+    <table class="table" id="table-usuarios">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -48,13 +48,14 @@
                     <tr>
                         <th scope="row">@usuario.Id</th>
                         <td>@usuario.Nome</td>
+                        <td>@usuario.Login</td>
                         <td>@usuario.Email</td>
                         <td>@usuario.DataCadastro</td>
                         <td>
-                            <div class="btn-group" role="group">
+                            @*<div class="btn-group" role="group">
                                 <a role="button" class="btn btn-primary" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar">Editar</a>
                                 <a role="button" class="btn btn-danger" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="ApagarConfirmacao">Apagar</a>
-                            </div>
+                            </div>*@
                         </td>
                     </tr>
                 }

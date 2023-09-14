@@ -17,6 +17,8 @@ namespace ControleDeContatos
             builder.Services.AddDbContext<BancoContext> //Conectando da forma nova
                 (options => options.UseSqlServer("Server=DESKTOP-I91URTC\\SQLEXPRESS;Database=DB_SistemaContatos;Trusted_Connection=True;Encrypt=False;"));
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>(); //Configurando injeção para de Interface a repositorio
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+
 
             var app = builder.Build();
 
