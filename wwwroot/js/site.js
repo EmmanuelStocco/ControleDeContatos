@@ -4,8 +4,12 @@
 
 // jquery  
 $(document).ready(function () {
+    getDatatable('#table-contatos');
+    getDatatable('#table-usuarios');
+});
 
-    $('#table-contatos').DataTable({
+function getDatatable(id) {
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -33,7 +37,8 @@ $(document).ready(function () {
             }
         }
     });
-});
+}
+
  
 $('.close-alert').click(function () {
     $('.alert').hide('hide');
