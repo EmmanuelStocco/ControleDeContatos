@@ -1,0 +1,19 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-I91URTC\\SQLEXPRESS;Database=DB_SistemaContatos;Integrated Security=True;"
+  },
+  "SMTP": {
+    "UserName": "apenasumtestertestando@outlook.com",
+    "Nome": "Sistema de Contatos",
+    "Host": "smtp-mail.outlook.com",
+    "Senha": "Fumaca021",
+    "Porta":  587
+  },
+  "AllowedHosts": "*"
+}
