@@ -11,6 +11,8 @@ namespace ControleDeContatos.Repositorio
         UsuarioModel ListarPorId(int id);
         UsuarioModel Adicionar(UsuarioModel contato);
         UsuarioModel Atualizar(UsuarioModel contato);
+
+        UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel);
         
         bool Apagar(int id);
 
