@@ -18,6 +18,7 @@ namespace ControleDeContatos.Controllers
         public IActionResult Index()
         {
             List<UsuarioModel> usuarios = _usuarioRepositorio.BuscarTodos();
+
             return View(usuarios);
         }
         public IActionResult Criar()
